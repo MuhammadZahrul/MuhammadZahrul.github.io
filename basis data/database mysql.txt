@@ -1,0 +1,91 @@
+Microsoft Windows [Version 10.0.22000.1574]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\User>bin>mysql -u root -p
+'bin' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\User>cd C:\xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+//melihat database//
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| apotek             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+
+//membuat database//
+
+6 rows in set (0.031 sec)MariaDB [(none)]> create database akademik;
+Query OK, 1 row affected (0.001 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| akademik           |
+| akademikpnl1       |
+| apotek             |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+8 rows in set (0.002 sec)
+
+//memlilih database yang akan diedit//
+
+MariaDB [(none)]> use akademik;
+Database changed
+
+//mengecek table//
+
+MariaDB [akademik]> show tables;
+Empty set (0.001 sec)
+
+//membuat table jurusan//
+
+MariaDB [akademik]> create table jurusan (kode_jurusan varchar(6) not null,nama_jurusan varchar(50) not null, namakajur varchar(50) not null, nipkajur varchar(18) not null,
+    -> ket varchar(25), primary key(kode_jurusan));
+Query OK, 0 rows affected (0.232 sec)
+
+//melihat table//
+
+MariaDB [akademik]> show tables;
++--------------------+
+| Tables_in_akademik |
++--------------------+
+| jurusan            |
++--------------------+
+
+//deskripsi table//
+
+1 row in set (0.001 sec)MariaDB [akademik]> describe jurusan;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| kode_jurusan | varchar(6)  | NO   | PRI | NULL    |       |
+| nama_jurusan | varchar(50) | NO   |     | NULL    |       |
+| namakajur    | varchar(50) | NO   |     | NULL    |       |
+| nipkajur     | varchar(18) | NO   |     | NULL    |       |
+| ket          | varchar(25) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+5 rows in set (0.064 sec)
